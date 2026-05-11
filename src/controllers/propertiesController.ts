@@ -155,7 +155,16 @@ export const getPropertyById = async (req: AuthRequest, res: Response) => {
       where: { id: req.params.id, deletedAt: null },
       include: {
         images: true,
-        createdBy: { select: { fullName: true, phone: true, email: true } },
+        createdBy: {
+          select: {
+            fullName: true,
+            phone: true,
+            email: true,
+            isAgentVerified: true,
+            bio: true,
+            profileImage: true,
+          },
+        },
       },
     });
 
